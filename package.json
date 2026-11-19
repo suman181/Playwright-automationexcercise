@@ -10,13 +10,11 @@
     "test:chromium": "playwright test --project=chromium",
     "test:firefox": "playwright test --project=firefox",
     "test:webkit": "playwright test --project=webkit",
-    "test:api": "playwright test --project=api",
     "test:smoke": "playwright test --grep @smoke",
     "test:negative": "playwright test --grep @negative",
     "test:headed": "playwright test --project=chromium --headed",
     "test:debug": "playwright test --project=chromium --debug",
     "report": "playwright show-report reports/html",
-    "report:summary": "node scripts/generate-summary.js",
     "typecheck": "tsc --noEmit"
   },
   "devDependencies": {
