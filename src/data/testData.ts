@@ -6,6 +6,7 @@ export const messages = {
   accountDeleted: 'Account Deleted!',
   allProducts: 'All Products',
   searchedProducts: 'Searched Products',
+  emptyCart: 'Cart is empty!',
 };
 
 export const searchTerms = ['Tshirt', 'Jeans', 'Top'];

@@ -30,3 +30,4 @@ Override the target with env vars: `BASE_URL=... TEST_USER_PASSWORD=... npm test
 | Login | Login + logout | Wrong password; unregistered e-mail; empty credentials |
 | Products | Catalogue lists items; details page equals listing (name, price) | – |
 | Search | Data-driven search terms return relevant results | Unknown term → no results |
+| Cart | Add one item (price/qty/total); add several; quantity from product page; remove item | Empty cart for new visitor; guest checkout prompts login |

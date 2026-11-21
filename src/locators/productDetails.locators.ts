@@ -9,5 +9,7 @@ export const productDetailsLocators = (page: Page) => {
     condition: info.locator('p', { hasText: 'Condition:' }),
     brand: info.locator('p', { hasText: 'Brand:' }),
     price: info.locator('span span'),
+    quantity: page.locator('#quantity'),
+    addToCart: info.locator('button.cart'),
   };
 };

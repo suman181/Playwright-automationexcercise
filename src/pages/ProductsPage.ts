@@ -1,5 +1,6 @@
 import { expect, type Page } from '@playwright/test';
 import { BasePage } from './BasePage';
+import { CartModal } from './components/CartModal';
 import { productsLocators } from '../locators/products.locators';
 
 export interface ProductSummary {
@@ -9,10 +10,12 @@ export interface ProductSummary {
 
 export class ProductsPage extends BasePage {
   private readonly ui: ReturnType<typeof productsLocators>;
+  readonly cartModal: CartModal;
 
   constructor(page: Page) {
     super(page);
     this.ui = productsLocators(page);
+    this.cartModal = new CartModal(page);
   }
 
   async goto() {
@@ -42,8 +45,21 @@ export class ProductsPage extends BasePage {
     };
   }
 
+  /** Hover reveals the overlay button; returns the product that was added. */
+  async addToCart(index: number): Promise<ProductSummary> {
+    const product = await this.getProduct(index);
+    const card = this.ui.cards.nth(index);
+    await card.hover();
+    await this.ui.cardOverlayAddToCart(card).click();
+    await this.cartModal.expectVisible();
+    return product;
+  }
+
   async openDetails(index: number) {
     await this.ui.cardViewDetails(this.ui.cards.nth(index)).click();
     await expect(this.page).toHaveURL(/\/product_details\//);
   }
+
+  async viewCartFromModal() { await this.cartModal.viewCart(); }
+  async continueShopping() { await this.cartModal.continueShopping(); }
 }

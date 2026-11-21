@@ -11,6 +11,7 @@ export class HeaderComponent {
 
   async goToLogin() { await this.ui.login.click(); }
   async goToProducts() { await this.ui.products.click(); }
+  async goToCart() { await this.ui.cart.click(); }
   async logout() { await this.ui.logout.click(); }
   async deleteAccount() { await this.ui.deleteAccount.click(); }
 

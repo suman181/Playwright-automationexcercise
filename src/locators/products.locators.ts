@@ -9,5 +9,6 @@ export const productsLocators = (page: Page) => ({
   // card-relative helpers
   cardName: (card: Locator) => card.locator('.productinfo p'),
   cardPrice: (card: Locator) => card.locator('.productinfo h2'),
+  cardOverlayAddToCart: (card: Locator) => card.locator('.product-overlay a.add-to-cart'),
   cardViewDetails: (card: Locator) => card.locator('a[href^="/product_details/"]').first(),
 });
