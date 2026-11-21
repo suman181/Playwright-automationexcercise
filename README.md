@@ -28,3 +28,5 @@ Override the target with env vars: `BASE_URL=... TEST_USER_PASSWORD=... npm test
 |---|---|---|
 | Registration | Register new account & verify logged-in header; delete account & verify via API that login no longer works | Duplicate e-mail; empty name / empty e-mail / malformed e-mail (native form validation) |
 | Login | Login + logout | Wrong password; unregistered e-mail; empty credentials |
+| Products | Catalogue lists items; details page equals listing (name, price) | – |
+| Search | Data-driven search terms return relevant results | Unknown term → no results |
