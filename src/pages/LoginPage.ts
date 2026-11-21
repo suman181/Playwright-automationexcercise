@@ -15,6 +15,12 @@ export class LoginPage extends BasePage {
     await this.expectOnLoginPage();
   }
 
+  async login(email: string, password: string) {
+    await this.ui.loginEmail.fill(email);
+    await this.ui.loginPassword.fill(password);
+    await this.ui.loginButton.click();
+  }
+
   async startSignup(name: string, email: string) {
     await this.ui.signupName.fill(name);
     await this.ui.signupEmail.fill(email);
@@ -27,8 +33,16 @@ export class LoginPage extends BasePage {
     await expect(this.ui.signupHeading).toContainText('New User Signup!');
   }
 
+  async expectLoginError(message: string) {
+    await expect(this.ui.loginError).toHaveText(message);
+  }
+
   async expectSignupError(message: string) {
     await expect(this.ui.signupError).toHaveText(message);
+  }
+
+  loginValidationMessage(field: 'email' | 'password') {
+    return this.validationMessageOf(field === 'email' ? this.ui.loginEmail : this.ui.loginPassword);
   }
 
   signupValidationMessage(field: 'name' | 'email') {

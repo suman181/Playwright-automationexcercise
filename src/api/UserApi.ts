@@ -25,4 +25,5 @@ export class UserApi {
 
   createAccount(user: UserData) { return this.call('POST', 'createAccount', toApiForm(user)); }
   deleteAccount(email: string, password: string) { return this.call('DELETE', 'deleteAccount', { email, password }); }
+  verifyLogin(email: string, password: string) { return this.call('POST', 'verifyLogin', { email, password }); }
 }

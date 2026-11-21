@@ -27,3 +27,4 @@ Override the target with env vars: `BASE_URL=... TEST_USER_PASSWORD=... npm test
 | Module | Positive | Negative |
 |---|---|---|
 | Registration | Register new account & verify logged-in header; delete account & verify via API that login no longer works | Duplicate e-mail; empty name / empty e-mail / malformed e-mail (native form validation) |
+| Login | Login + logout | Wrong password; unregistered e-mail; empty credentials |

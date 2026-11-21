@@ -5,6 +5,8 @@ export const headerLocators = (page: Page) => {
   return {
     home: nav.locator('a[href="/"]'),
     login: nav.locator('a[href="/login"]'),
+    logout: nav.locator('a[href="/logout"]'),
+    deleteAccount: nav.locator('a[href="/delete_account"]'),
     loggedInAs: nav.locator('a', { hasText: 'Logged in as' }),
   };
 };

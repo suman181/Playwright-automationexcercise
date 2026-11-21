@@ -10,9 +10,16 @@ export class HeaderComponent {
   }
 
   async goToLogin() { await this.ui.login.click(); }
+  async logout() { await this.ui.logout.click(); }
+  async deleteAccount() { await this.ui.deleteAccount.click(); }
 
   async expectLoggedInAs(name: string) {
     await expect(this.ui.loggedInAs).toBeVisible();
     await expect(this.ui.loggedInAs).toContainText(name);
+  }
+
+  async expectLoggedOut() {
+    await expect(this.ui.loggedInAs).toBeHidden();
+    await expect(this.ui.login).toBeVisible();
   }
 }

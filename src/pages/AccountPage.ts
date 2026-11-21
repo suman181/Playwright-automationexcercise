@@ -17,5 +17,10 @@ export class AccountPage extends BasePage {
     await expect(this.ui.created).toContainText(messages.accountCreated, { ignoreCase: true });
   }
 
+  async expectDeleted() {
+    await expect(this.page).toHaveURL(/delete_account/);
+    await expect(this.ui.deleted).toContainText(messages.accountDeleted, { ignoreCase: true });
+  }
+
   async continue() { await this.ui.continueButton.click(); }
 }

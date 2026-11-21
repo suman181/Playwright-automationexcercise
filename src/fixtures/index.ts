@@ -22,6 +22,8 @@ interface Fixtures {
   newUser: UserData;
   /** Unique user pre-created through the API (fast setup). Removed after the test. */
   registeredUser: UserData;
+  /** registeredUser that is already logged in through the UI. */
+  loggedInUser: UserData;
   /** Auto fixture: aborts third-party ad requests that overlay the site and slow tests down. */
   blockAds: void;
 }
@@ -63,6 +65,13 @@ export const test = base.extend<Fixtures>({
     expect(created.body.responseCode, 'precondition: user created through API').toBe(201);
     await use(user);
     await api.deleteAccount(user.email, user.password).catch(() => undefined);
+  },
+
+  loggedInUser: async ({ app, registeredUser }, use) => {
+    await app.login.goto();
+    await app.login.login(registeredUser.email, registeredUser.password);
+    await app.header.expectLoggedInAs(registeredUser.name);
+    await use(registeredUser);
   },
 });
 

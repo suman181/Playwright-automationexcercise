@@ -18,6 +18,17 @@ test.describe('Registration', () => {
       await app.header.expectLoggedInAs(newUser.name);
     });
 
+  test('registered customer can delete the account and can no longer log in',
+    { tag: ['@regression', '@registration'] },
+    async ({ app, loggedInUser, api }) => {
+      await app.header.deleteAccount();
+      await app.account.expectDeleted();
+      await app.account.continue();
+
+      const { body } = await api.verifyLogin(loggedInUser.email, loggedInUser.password);
+      expect(body.responseCode, 'deleted user must not exist any more').toBe(404);
+    });
+
   test('cannot sign up with an e-mail address that is already registered',
     { tag: ['@regression', '@registration', '@negative'] },
     async ({ app, registeredUser }) => {
