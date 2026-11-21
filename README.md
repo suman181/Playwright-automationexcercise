@@ -19,6 +19,7 @@ npm run test:smoke     # @smoke only
 npm run test:negative  # @negative only
 npm run test:headed    # watch it run
 npm run test:debug     # Playwright inspector
+npm run test:api       # API only
 ```
 
 Override the target with env vars: `BASE_URL=... TEST_USER_PASSWORD=... npm test` (see `.env.example`).
@@ -32,3 +33,4 @@ Override the target with env vars: `BASE_URL=... TEST_USER_PASSWORD=... npm test
 | Search | Data-driven search terms return relevant results | Unknown term → no results |
 | Cart | Add one item (price/qty/total); add several; quantity from product page; remove item | Empty cart for new visitor; guest checkout prompts login |
 | Checkout | Logged-in end-to-end order (address check, order review, comment, payment, confirmation + invoice link); guest → registers during checkout → pays | Payment with empty card details is blocked |
+| API (`api_list`) | products, brands, search, create/read/update/delete user, verifyLogin | Unsupported methods (405), missing params (400), duplicate user, unknown user (404) |
