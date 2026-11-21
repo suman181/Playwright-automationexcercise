@@ -2,7 +2,8 @@ import { test as base, expect } from '@playwright/test';
 import { UserApi } from '../api/UserApi';
 import { buildUser, type UserData } from '../data/userFactory';
 import {
-  AccountPage, CartPage, HeaderComponent, HomePage, LoginPage, ProductDetailsPage, ProductsPage, SignupPage,
+  AccountPage, CartPage, CheckoutPage, HeaderComponent, HomePage, LoginPage,
+  PaymentPage, ProductDetailsPage, ProductsPage, SignupPage,
 } from '../pages';
 
 export interface App {
@@ -14,6 +15,8 @@ export interface App {
   products: ProductsPage;
   productDetails: ProductDetailsPage;
   cart: CartPage;
+  checkout: CheckoutPage;
+  payment: PaymentPage;
 }
 
 interface Fixtures {
@@ -52,6 +55,8 @@ export const test = base.extend<Fixtures>({
       products: new ProductsPage(page),
       productDetails: new ProductDetailsPage(page),
       cart: new CartPage(page),
+      checkout: new CheckoutPage(page),
+      payment: new PaymentPage(page),
     });
   },
 

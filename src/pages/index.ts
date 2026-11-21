@@ -5,4 +5,6 @@ export { AccountPage } from './AccountPage';
 export { ProductsPage } from './ProductsPage';
 export { ProductDetailsPage } from './ProductDetailsPage';
 export { CartPage } from './CartPage';
+export { CheckoutPage } from './CheckoutPage';
+export { PaymentPage } from './PaymentPage';
 export { HeaderComponent } from './components/HeaderComponent';
